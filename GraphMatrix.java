@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class GraphMatrix {
-    private ArrayList<String> vertices = new ArrayList<>();
+    private String[] vertices = new String[2500];
     private boolean[][] edges = new boolean[2500][2500];
-       // graph['a'] -> [b, f, e]
+    // graph['a'] -> [b, f, e]
 
     /*
      * 186
@@ -36,20 +36,27 @@ public class GraphMatrix {
      * 0.6257%
      */
     private boolean directed = false;
-
-    public GraphMatrix() {
-        this(false); 
-    }
+    private boolean weighted = false;
 
     public GraphMatrix(boolean directed) {
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                edges[i][j] = false;
+            }
+        }
         this.directed = directed;
     }
 
+    /* 
     public void addVertex(String node) {
         vertices.add(node);
-    }
+        for (int i = 0; i < vertices.size(); i++) {
+            edges[i][vertices.size() - 1] = false;
+            edges[vertices.size() - 1][i] = false;
+        }
+    }*/
 
-     /*
+    /*
      * 6x6 matriz de adyacencia
      *    a  b  c  d  e  f  g
      * a [F][T][F][F][T][T][F]
@@ -82,15 +89,21 @@ public class GraphMatrix {
      * [2][F][F][F][8][F][F]
      * [F][F][F][F][F][F][F]
      */
-
-    public void addEdge(String start, String end, boolean connection) {
+    /* 
+    public void addEdge(String start, String end, int weight) {
         int startIndex = vertices.indexOf(start);
         int endIndex = vertices.indexOf(end);
-        if (startIndex != -1 && endIndex != -1) {
-            edges[startIndex][endIndex] = connection;
+        if (this.weighted) {
+            edges[startIndex][endIndex] = weight;
             if (!directed) {
-                edges[endIndex][startIndex] = connection; 
+                edges[endIndex][startIndex] = weight;
             }
+        } else {
+            edges[startIndex][endIndex] = true;
+            if (!directed) {
+                edges[endIndex][startIndex] = true;
+            }
+
         }
-    }
+    }*/
 }
