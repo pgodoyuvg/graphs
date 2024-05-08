@@ -1,12 +1,44 @@
 import java.util.ArrayList;
 
-public class Graph {
-    private ArrayList<String> vertices = new ArrayList<>();
-    private boolean[][] edges = new Array<bool, bool>();
+public class GraphMatrix {
+    private String[] vertices = new String[2500];
+    private boolean[][] edges = new boolean[2500][2500];
+    // graph['a'] -> [b, f, e]
+
+    /*
+     * 186
+     * 219
+     * 537
+     * 99
+     * 625
+     * 667
+     * 412
+     * 488
+     * 383
+     * 90
+     * 345
+     * 66
+     * 490
+     * 89
+     * 22
+     * 180
+     * 262
+     * 150
+     * 183
+     * 40
+     * 253
+     * 164
+     * 165
+     * 142
+     * -------
+     * 6,257
+     * total posible: 1,000,000
+     * 0.6257%
+     */
     private boolean directed = false;
     private boolean weighted = false;
 
-    public Graph(boolean directed) {
+    public GraphMatrix(boolean directed) {
         for (int i = 0; i < 100; i++) {
             for (int j = 0; j < 100; j++) {
                 edges[i][j] = false;
@@ -25,7 +57,7 @@ public class Graph {
 
     /*
      * 6x6 matriz de adyacencia
-     * a b c d e f g
+     *    a  b  c  d  e  f  g
      * a [F][T][F][F][T][T][F]
      * b [T][F][T][F][F][F][F]
      * c [F][T][F][F][F][F][F]
