@@ -2,12 +2,12 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class CustomList<T> implements Iterable<T> {
-    private static final int INITIAL_CAPACITY = 10;
+    private static final int capacidad = 10;
     private Object[] elements;
     private int size;
 
     public CustomList() {
-        this.elements = new Object[INITIAL_CAPACITY];
+        this.elements = new Object[capacidad];
         this.size = 0;
     }
 
@@ -40,7 +40,7 @@ public class CustomList<T> implements Iterable<T> {
 
             @Override
             public boolean hasNext() {
-                return currentIndex < size && elements[currentIndex] != null;
+                return currentIndex < size;
             }
 
             @Override
@@ -50,13 +50,12 @@ public class CustomList<T> implements Iterable<T> {
         };
     }
 
-    public int indexOf(Integer start) {
-        for (int i = 0; i < elements.length; i++) {
-            if (Integer.valueOf((Integer) elements[i]).equals(start)) {
+    public int indexOf(T element) {
+        for (int i = 0; i < size; i++) {
+            if (elements[i].equals(element)) {
                 return i;
             }
         }
         return -1;
     }
 }
-

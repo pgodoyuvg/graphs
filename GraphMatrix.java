@@ -25,7 +25,7 @@ public class GraphMatrix {
                 edges[endIndex][startIndex] = true;
             }
         } else {
-            System.out.println("Error: Al menos uno de los vértices no existe en el grafo.");
+            System.out.println("Error: At least one of the vertices does not exist in the graph.");
         }
     }
 
@@ -39,5 +39,3 @@ public class GraphMatrix {
         }
     }
 }
-
-

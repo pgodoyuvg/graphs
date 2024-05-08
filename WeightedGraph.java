@@ -8,11 +8,11 @@ public class WeightedGraph extends GraphMatrix {
     }
 
     public void addEdge(Integer start, Integer end, int weight) {
-        int startIndex = vertices.indexOf(start);
+        int startIndex = vertices.size() - 1;
         int endIndex = vertices.indexOf(end);
 
-        if (startIndex != -1 && endIndex != -1) {
-            weights[startIndex][endIndex] = weight;
+        if (endIndex != -1) {
+            weights[start][endIndex] = weight;
             if (!directed) {
                 weights[endIndex][startIndex] = weight;
             }
@@ -31,5 +31,3 @@ public class WeightedGraph extends GraphMatrix {
         }
     }
 }
-
-

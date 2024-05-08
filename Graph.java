@@ -39,21 +39,4 @@ public class Graph<K, V> {
             System.out.println();
         }
     }
-
-    public static void main(String[] args) {
-        Graph<String, Integer> graph = new Graph<>();
-
-        graph.addVertex("a", 1);
-        graph.addVertex("b", 2);
-        graph.addVertex("c", 3);
-        graph.addVertex("d", 4);
-
-        graph.addEdge("a", "b");
-        graph.addEdge("a", "c");
-        graph.addEdge("b", "c");
-        graph.addEdge("c", "d");
-
-        graph.printGraph();
-    }
 }
-
