@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class GraphMatrix {
-    private CustomList<String> vertices = new CustomList<>();
-    private boolean[][] edges = new boolean[2500][2500];
+    private Graph<String, String> vertices = new Graph<>();
+
     // graph['a'] -> [b, f, e]
 
     /*
@@ -39,20 +39,13 @@ public class GraphMatrix {
     private boolean weighted = false;
 
     public GraphMatrix(boolean directed) {
-        for (int i = 0; i < 100; i++) {
-            for (int j = 0; j < 100; j++) {
-                edges[i][j] = false;
-            }
-        }
+        
         this.directed = directed;
     }
 
     public void addVertex(String node) {
-        vertices.add(node);
-        for (int i = 0; i < vertices.size(); i++) {
-            edges[i][vertices.size() - 1] = false;
-            edges[vertices.size() - 1][i] = false;
-        }
+        vertices.addVertex(node, node);
+        
     }
 
     /*
@@ -90,19 +83,6 @@ public class GraphMatrix {
      */
 
     public void addEdge(String start, String end) {
-        int startIndex = vertices.indexOf(start);
-        int endIndex = vertices.indexOf(end);
-        if (this.weighted) {
-/*             edges[startIndex][endIndex] = weight;
-            if (!directed) {
-                edges[endIndex][startIndex] = weight;
-            }*/
-        } else {
-            edges[startIndex][endIndex] = true;
-            if (!directed) {
-                edges[endIndex][startIndex] = true;
-            }
-
-        }
+        vertices.addEdge(start, end);
     }
 }

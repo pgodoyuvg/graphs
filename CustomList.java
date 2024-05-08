@@ -1,11 +1,11 @@
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomList<T> {
     List<T> customList;
 
     public CustomList() {
-        this.customList = new LinkedList<>();
+        this.customList = new ArrayList<>();
     }
 
     public void add(T e) {
