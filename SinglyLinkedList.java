@@ -1,5 +1,6 @@
-import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class SinglyLinkedList<T> {
     private Node<T> head;
@@ -89,7 +90,37 @@ public class SinglyLinkedList<T> {
         return current.data;
     }
 
+    public T get(int i) {
+        if (isEmpty()) {
+            throw new NoSuchElementException("List is empty.");
+        }
+        Node<T> current = head;
+        for (int j = 0; j < i; j++) {
+            if (current == null) {
+                throw new NoSuchElementException("no element on index");
+            }
+            current = current.next;
+        }
+        return current.data;
+    }
 
+    public int indexOf(T value) {
+        if (isEmpty()) {
+            throw new NoSuchElementException("List is empty.");
+        }
+        Node<T> current = head;
+        int count = 0;
+        while (current != value) {
+            current = current.next;
+            count ++;
+            if (current == null) {
+                throw new NoSuchElementException("Element not in list");
+            }
+        }
+        return count;
+    }
+
+    
     public int size() {
         return size;
     }
@@ -98,11 +129,7 @@ public class SinglyLinkedList<T> {
     public boolean isEmpty() {
         return size == 0;
     }
-
-    public T get(int i) {
-
-        return null;
-    }
+    
 
     // Métodos de IStack<T>
 
@@ -123,5 +150,12 @@ public class SinglyLinkedList<T> {
 
     public boolean empty() {
         return isEmpty();
+    }
+
+
+    public Stream<T> stream() {
+        return Stream.iterate(head, n -> n.next)
+                     .limit(size)
+                     .map(n -> n.data);
     }
 }

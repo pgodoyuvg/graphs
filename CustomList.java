@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomList<T> {
-    List<T> customList;
+    SinglyLinkedList<T> customList;
 
     public CustomList() {
-        this.customList = new ArrayList<>();
+        this.customList = new SinglyLinkedList<>();
     }
 
     public void add(T e) {
