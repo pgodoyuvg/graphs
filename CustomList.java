@@ -1,3 +1,5 @@
+import java.util.function.Predicate;
+
 public class CustomList<T> {
     private Node<T> first;
     private int size;
@@ -40,5 +42,16 @@ public class CustomList<T> {
         }
 
         return current.getValue();
+    }
+
+    public T find(Predicate<T> predicate) {
+        Node<T> current = first;
+        for (int i = 0; i < size; i++) {
+            if (predicate.test(current.getValue())) {
+                return current.getValue();
+            }
+        }
+
+        return null; 
     }
 }
