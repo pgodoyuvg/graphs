@@ -7,7 +7,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        GraphMatrix graph = new GraphMatrix();
+        GraphMatrix graph = new GraphMatrix(false);
         graph.addVertex("a");
         graph.addVertex("b");
         graph.addVertex("c");

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class GraphMatrix {
-    private String[] vertices = new String[2500];
+    private CustomList<String> vertices = new CustomList<>();
     private boolean[][] edges = new boolean[2500][2500];
     // graph['a'] -> [b, f, e]
 
@@ -89,14 +89,14 @@ public class GraphMatrix {
      * [F][F][F][F][F][F][F]
      */
 
-    public void addEdge(String start, String end, int weight) {
+    public void addEdge(String start, String end) {
         int startIndex = vertices.indexOf(start);
         int endIndex = vertices.indexOf(end);
         if (this.weighted) {
-            edges[startIndex][endIndex] = weight;
+/*             edges[startIndex][endIndex] = weight;
             if (!directed) {
                 edges[endIndex][startIndex] = weight;
-            }
+            }*/
         } else {
             edges[startIndex][endIndex] = true;
             if (!directed) {

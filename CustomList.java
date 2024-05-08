@@ -20,6 +20,15 @@ public class CustomList<T> {
         return customList.size();
     }
 
+    public T filter(java.util.function.Predicate<T> predicate) {
+        return customList.stream().filter(predicate).findFirst().orElse(null);
+    }
+
+    public int indexOf(T e) {
+        return customList.indexOf(e);
+    }
+
+
 
     
 }
