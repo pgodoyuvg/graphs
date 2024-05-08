@@ -47,13 +47,14 @@ public class GraphMatrix {
         this.directed = directed;
     }
 
+    /* 
     public void addVertex(String node) {
         vertices.add(node);
         for (int i = 0; i < vertices.size(); i++) {
             edges[i][vertices.size() - 1] = false;
             edges[vertices.size() - 1][i] = false;
         }
-    }
+    }*/
 
     /*
      * 6x6 matriz de adyacencia
@@ -88,7 +89,7 @@ public class GraphMatrix {
      * [2][F][F][F][8][F][F]
      * [F][F][F][F][F][F][F]
      */
-
+    /* 
     public void addEdge(String start, String end, int weight) {
         int startIndex = vertices.indexOf(start);
         int endIndex = vertices.indexOf(end);
@@ -104,5 +105,5 @@ public class GraphMatrix {
             }
 
         }
-    }
+    }*/
 }

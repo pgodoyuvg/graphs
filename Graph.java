@@ -6,17 +6,15 @@ public class Graph<K, V> {
     public void addVertex(K key1, K key2) {
         Vertex<K, V> vertex1 = findOrCreateVertex(key1);
         Vertex<K, V> vertex2 = findOrCreateVertex(key2);
-    
-        // Agregar la conexión entre los vértices
-        vertex1.addConnection(vertex2);
-        vertex2.addConnection(vertex1);
     }
     
     private Vertex<K, V> findOrCreateVertex(K key) {
-        for (Vertex<K, V> vertex : vertices) {
-            if (vertex.getKey().equals(key)) {
-                return vertex;
+        Node<Vertex<K, V>> current = vertices.getHead();
+        while (current != null) {
+            if (current.getValue().getKey().equals(key)) {
+                return current.getValue();
             }
+            current = current.getNext();
         }
     
         Vertex<K, V> newVertex = new Vertex<>(key, null); // Porque no estamos pasando valores de vértice
@@ -24,3 +22,4 @@ public class Graph<K, V> {
         return newVertex;
     }
 }
+
