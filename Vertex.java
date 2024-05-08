@@ -1,11 +1,12 @@
 public class Vertex<K, V> {
     private K key;
     private V value;
-    private CustomList<K> neighbors = new CustomList<>();
+    private CustomList<K> neighbors;
 
     public Vertex(K key, V value) {
         this.key = key;
         this.value = value;
+        this.neighbors = new CustomList<>();
     }
 
     public K getKey() {
@@ -24,10 +25,8 @@ public class Vertex<K, V> {
         neighbors.add(neighbor);
     }
 
-    public void getNeighbors() {
-        for (int i = 0; i < neighbors.size(); i++) {
-            System.out.println(neighbors.get(i));
-        }
+    public CustomList<K> getNeighbors() {
+        return neighbors;
     }
 
     @Override
@@ -35,3 +34,4 @@ public class Vertex<K, V> {
         return key + " -> " + value;
     }
 }
+
