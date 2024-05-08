@@ -1,61 +1,54 @@
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class CustomList<T> implements Iterable<T> {
-    private static final int capacidad = 10;
-    private Object[] elements;
-    private int size;
+    private Node<T> head;
 
     public CustomList() {
-        this.elements = new Object[capacidad];
-        this.size = 0;
+        this.head = null;
     }
 
-    public void add(T element) {
-        ensureCapacity();
-        elements[size++] = element;
-    }
-
-    public T get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index out of bounds");
+    public void add(T data) {
+        Node<T> newNode = new Node<>(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node<T> current = head;
+            while (current.getNext() != null) {
+                current = current.getNext();
+            }
+            current.setNext(newNode);
         }
-        return (T) elements[index];
     }
 
-    public int size() {
-        return size;
-    }
-
-    private void ensureCapacity() {
-        if (size == elements.length) {
-            elements = Arrays.copyOf(elements, elements.length * 2);
+    public void printList() {
+        Node<T> current = head;
+        while (current != null) {
+            System.out.print(current.getData() + " ");
+            current = current.getNext();
         }
+        System.out.println();
     }
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            private int currentIndex = 0;
-
-            @Override
-            public boolean hasNext() {
-                return currentIndex < size;
-            }
-
-            @Override
-            public T next() {
-                return (T) elements[currentIndex++];
-            }
-        };
+        return new CustomListIterator();
     }
 
-    public int indexOf(T element) {
-        for (int i = 0; i < size; i++) {
-            if (elements[i].equals(element)) {
-                return i;
-            }
+    private class CustomListIterator implements Iterator<T> {
+        private Node<T> current = head;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
         }
-        return -1;
+
+        @Override
+        public T next() {
+            T data = current.getData();
+            current = current.getNext();
+            return data;
+        }
     }
 }
+
+

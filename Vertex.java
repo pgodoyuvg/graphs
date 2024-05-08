@@ -34,4 +34,3 @@ public class Vertex<K, V> {
         return key + " -> " + value;
     }
 }
-
