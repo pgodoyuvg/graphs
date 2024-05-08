@@ -1,29 +1,21 @@
-// [a] - [b] - [c]
-// |   \
-// [f] - [e] - [d]
-
-
-//[a]->[b, f, e]->[c]
-
 public class Main {
     public static void main(String[] args) {
-        GraphMatrix graph = new GraphMatrix();
-        graph.addVertex("a");
-        graph.addVertex("b");
-        graph.addVertex("c");
-        graph.addVertex("d");
-        graph.addVertex("e");
-        graph.addVertex("f");
+        // Crear nodos
+        Vertex<String, String> leonardo = new Vertex<>("Leonardo Mejía", "Estudiante de Ing. en Computación");
+        Vertex<String, String> mariaJose = new Vertex<>("Maria José Girón", "Estudiante de Ing. en Computación");
+        Vertex<String, String> joseJuan = new Vertex<>("José Juan", "Estudiante de Nutrición");
 
-        graph.addEdge("a", "b");
-        graph.addEdge("a", "f");
-        graph.addEdge("a", "e");
-        graph.addEdge("b", "c");
-        graph.addEdge("e", "c");
-        graph.addEdge("e", "d");
-        graph.addEdge("f", "e");
+        leonardo.addNeighbor(mariaJose.getKey());
+        leonardo.addNeighbor(joseJuan.getKey());
+        mariaJose.addNeighbor(leonardo.getKey());
+        mariaJose.addNeighbor(joseJuan.getKey());
+    
 
-        // System.out.println(graph.topologicalSort());
-
+        System.out.println("Amigos de Leonardo Mejía:");
+        leonardo.getNeighbors();
+        System.out.println("\nAmigos de Maria José Girón:");
+        mariaJose.getNeighbors();
+        System.out.println("\nAmigos de José Juan:");
+        joseJuan.getNeighbors();
     }
 }
