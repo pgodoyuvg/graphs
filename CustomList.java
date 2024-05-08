@@ -1,3 +1,5 @@
+import java.util.function.Predicate;
+
 public class CustomList<K> {
     private Node<K> head;
     private int size = 0;

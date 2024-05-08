@@ -1,12 +1,13 @@
 import java.util.function.Predicate;
 
 public class Graph<K, V> {
-    private CustomList<Vertex<K, V>> vertices = new CustomList<>();
+    CustomList<Vertex<K, V>> vertices = new CustomList<>();
 
     public void addVertex(K key, V value) {
-        if (vertices.find(vertex -> vertex.getKey().equals(key)) == null) {
-            vertices.add(new Vertex<K, V>(key, value));
+        if (vertices.find(vertex -> vertex.getKey().equals(key)) != null) { 
+    return;
         }
+     vertices.add(new Vertex<>(key, value));
     }
 
     public void addEdge(K key1, K key2) {
