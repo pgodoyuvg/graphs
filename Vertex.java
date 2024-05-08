@@ -24,11 +24,6 @@ public class Vertex<K, V> {
         neighbors.add(neighbor);
     }
 
-    public void getNeighbors() {
-        for (int i = 0; i < neighbors.size(); i++) {
-            System.out.println(neighbors.get(i));
-        }
-    }
 
     @Override
     public String toString() {

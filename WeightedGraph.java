@@ -4,5 +4,4 @@ public class WeightedGraph extends GraphMatrix{
         super(directed);
         //TODO Auto-generated constructor stub
     }
-    
 }
