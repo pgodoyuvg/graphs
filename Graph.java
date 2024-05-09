@@ -1,14 +1,16 @@
 public class Graph<K, V> {
-    private CustomList<Vertex<K, V>> vertices = new CustomList<>();
+    public CustomList<Vertex<K, V>> vertices = new CustomList<>();
 
     public Graph(){}
 
-    public void addVertex(K key1, K key2) {
-        Vertex<K, V> vertex1 = findOrCreateVertex(key1);
-        Vertex<K, V> vertex2 = findOrCreateVertex(key2);
+    public Vertex<K, V> createRelation(K key1, K key2) {
+        Vertex<K, V> vertex1 = createVertex(key1);
+        Vertex<K, V> vertex2 = createVertex(key2);
+        vertex1.addNeighbor(vertex2.getKey());
+        return vertex1;
     }
     
-    private Vertex<K, V> findOrCreateVertex(K key) {
+    public Vertex<K, V> createVertex(K key) {
         Node<Vertex<K, V>> current = vertices.getHead();
         while (current != null) {
             if (current.getValue().getKey().equals(key)) {
@@ -21,5 +23,6 @@ public class Graph<K, V> {
         vertices.add(newVertex);
         return newVertex;
     }
+
 }
 

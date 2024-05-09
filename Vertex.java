@@ -24,9 +24,13 @@ public class Vertex<K, V> {
         neighbors.add(neighbor);
     }
 
+    public CustomList<K> getNeighbors() {
+        return neighbors;
+    }
 
     @Override
     public String toString() {
         return key + " -> " + value;
     }
+
 }

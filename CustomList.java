@@ -1,4 +1,6 @@
-public class CustomList<T> {
+import java.util.Iterator;
+
+public class CustomList<T> implements Iterable<T> {
     private Node<T> head;
     private int size;
 
@@ -25,4 +27,32 @@ public class CustomList<T> {
         return head;
     }
 
-}    
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new CustomListIterator();
+    }
+
+    private class CustomListIterator implements Iterator<T> {
+        private Node<T> current;
+
+        public CustomListIterator() {
+            this.current = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            T value = current.getValue();
+            current = current.getNext();
+            return value;
+        }
+    }
+}
