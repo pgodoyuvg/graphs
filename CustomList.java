@@ -32,12 +32,12 @@ public class CustomList<T> {
     }
 
     public T get(int index) {
-        if (index < 0 || index >= size ) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
 
         Node<T> current = first;
-        for (int i = 0; i <= index; i++) {
+        for (int i = 0; i < index; i++) {
             current = current.getNext();
         }
 
@@ -50,6 +50,8 @@ public class CustomList<T> {
             if (predicate.test(current.getValue())) {
                 return current.getValue();
             }
+
+            current = current.getNext();
         }
 
         return null; 
