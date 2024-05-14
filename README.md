@@ -1,4 +1,7 @@
 # Integrantes
 
-- Victor Pérez (23731)
-- Renato Rojas (23813)
+- Victor Pérez
+- Renato Rojas
+- Juan Solís
+- Diego Flores
+- Nils Muralles
